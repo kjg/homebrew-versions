@@ -116,7 +116,7 @@ class Gcc48 < Formula
     end
 
     mkdir 'build' do
-      unless MacOS::CLT.installed?
+      if !MacOS::CLT.installed? || MacOS.version == :mavericks
         # For Xcode-only systems, we need to tell the sysroot path.
         # 'native-system-header's will be appended
         args << "--with-native-system-header-dir=/usr/include"
